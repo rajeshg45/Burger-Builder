@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Burger from "./Burger/Burger";
 import Controls from "./Controls/Controls";
-import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
 const INGREDIENT_PRICES = {
     salad: 20,
@@ -17,7 +17,7 @@ export default class BurgerBuilder extends Component {
             { type: 'meat', amount: 0 }
         ],
         totalPrice: 80,
-        modalOpen: false
+        show: false
     }
 
     addIngredientHandle = type => {
@@ -43,7 +43,7 @@ export default class BurgerBuilder extends Component {
 
     toggleModal = () => {
         this.setState({
-            modalOpen: !this.state.modalOpen
+            show: !false
         })
     }
 
@@ -56,18 +56,18 @@ export default class BurgerBuilder extends Component {
                         ingredientAdded={this.addIngredientHandle}
                         ingredientRemoved={this.removeIngredientHandle}
                         price={this.state.totalPrice}
-                        toggleModal={this.toggleModal}
+                        showModal={this.toggleModal}
                     />
                 </div>
-                <Modal isOpen={this.state.modalOpen}>
-                    <ModalHeader>Your Order Summary</ModalHeader>
-                    <ModalBody>
+                <Modal isOpen={this.state.open} show={this.state.show}>
+                    <Modal.Header>Your Order Summary</Modal.Header>
+                    <Modal.Body>
                         <h5>Total Price: {this.state.totalPrice.toFixed(0)} BDT</h5>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="success" onClick={this.toggleModal}>Continue to Checkout</Button>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button color="sucess" onClick={this.toggleModal}>Continue To Checkout</Button>
                         <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
-                    </ModalFooter>
+                    </Modal.Footer>
                 </Modal>
             </div>
         )
