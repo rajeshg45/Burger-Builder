@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Burger from "./Burger/Burger";
 import Controls from "./Controls/Controls";
 import { Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import './BurgerBuilder.css';
 
 const INGREDIENT_PRICES = {
     salad: 20,
     cheese: 40,
     meat: 90
-}
+};
 
 export default class BurgerBuilder extends Component {
     state = {
@@ -47,6 +49,12 @@ export default class BurgerBuilder extends Component {
         })
     }
 
+    closeModal = () => {
+        this.setState({
+            show: false
+        })
+    }
+
     render() {
         return (
             <div>
@@ -65,8 +73,10 @@ export default class BurgerBuilder extends Component {
                         <h5>Total Price: {this.state.totalPrice.toFixed(0)} BDT</h5>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button color="sucess" onClick={this.toggleModal}>Continue To Checkout</Button>
-                        <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+                        <Link to={'/checkout'}>
+                            <Button color="success">Continue To Checkout</Button>
+                        </Link>
+                        <Button color="secondary" onClick={this.closeModal}>Cancel</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
