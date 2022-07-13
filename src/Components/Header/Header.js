@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import Logo from '../../assets/logo.png';
 import { connect } from "react-redux";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 const mapStateToProps = state => {
     return {
@@ -14,29 +13,28 @@ const mapStateToProps = state => {
 
 const Header = props => {
     let links = null;
-    if (propTypes.token === null) {
+    if (props.token === null) {
         links = (
             <Nav className="mr-md-5">
-                <NavItem>
-                    <NavLink to="/" className="NavLink">Burger Builder</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink to="/orders" className="NavLink">orders</NavLink>
-                </NavItem>
                 <NavItem>
                     <NavLink to="/login" className="NavLink">Login</NavLink>
                 </NavItem>
             </Nav>
         )
     } else {
-        <Nav className="mr-md-5">
-            <NavItem>
-                <NavLink to="/" className="NavLink">Burger Builder</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink to="/orders" className="NavLink">orders</NavLink>
-            </NavItem>
-        </Nav>
+        links = (
+            <Nav className="mr-md-5">
+                <NavItem>
+                    <NavLink to="/" className="NavLink">Burger Builder</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink to="/orders" className="NavLink">Orders</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink to="/logout" className="NavLink">Logout</NavLink>
+                </NavItem>
+            </Nav>
+        )
     }
     return (
         <div className="Navigation">

@@ -98,7 +98,9 @@ class Checkout extends Component {
                     <option value="Bkash">Bkash</option>
                 </select>
                 <br />
-                <Button style={{ backgroundColor: "#D70F64" }} className="mr-auto" onClick={this.submitHandler} disabled={!this.props.purchaseable} >Place Order</Button>
+                <Link to={-1}>
+                    <Button style={{ backgroundColor: "#D70F64" }} className="mr-auto" onClick={this.submitHandler} disabled={!this.props.purchaseable} >Place Order</Button>
+                </Link>
                 <Link to={-1}>
                     <Button style={{ backgroundColor: "#666362" }} className="ml-1" >Cancel</Button>
                 </Link>
