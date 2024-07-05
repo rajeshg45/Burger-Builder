@@ -6,13 +6,7 @@ export const addIngredient = igtype => {
         type: actionTypes.ADD_INGREDIENT,
         payload: igtype,
     }
-}
-
-export const removeIngredient = igtype => {
-    return {
-        type: actionTypes.REMOVE_INGREDIENT,
-        payload: igtype,
-    }
+}bvjbjdbnv
 }
 
 export const updatePurchaseable = () => {
